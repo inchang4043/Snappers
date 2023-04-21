@@ -19,12 +19,8 @@ img_array = np.array(bytearray(img_resp.read()), dtype=np.uint8)
 # NumPy 배열을 영상으로 변환합니다.
 frame = cv2.imdecode(img_array, -1)
 
-# 비디오 파일 열기
-
-
 # 'frame' 창 생성
 cv2.namedWindow('frame')
-
 
 # bbox 초기화 함수
 def init_bbox(x, y):
@@ -38,7 +34,6 @@ def update_bbox(x, y):
     global bbox_tl, bbox_br
     bbox_br = (x, y)
 
-
 # bbox 추출 함수
 def get_bbox():
     x = min(bbox_tl[0], bbox_br[0])
@@ -46,7 +41,6 @@ def get_bbox():
     w = abs(bbox_tl[0] - bbox_br[0])
     h = abs(bbox_tl[1] - bbox_br[1])
     return (x, y, w, h)
-
 
 # 마우스 이벤트 처리를 위한 콜백 함수
 def mouse_callback(event, x, y, flags, param):
